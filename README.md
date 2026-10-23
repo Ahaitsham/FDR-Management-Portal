@@ -1,13 +1,10 @@
 # FDR-Management-Portal
 
-Base URL: http://localhost:3000
 
-Login stores a `token` cookie, and every later request uses it automatically.
-In Postman, use the same host for all requests.
 
 # ADMIN LOGIN (for testing)
-    Email    : <ADMIN_EMAIL from .env>
-    Password : <ADMIN_PASSWORD from .env>
+    Email    : fdradmin
+    Password : admin1234
     (Created by running: node scripts/seed.js)
 
 # ROLES

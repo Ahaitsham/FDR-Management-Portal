@@ -30,11 +30,11 @@ const userSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // An institution user must belong to an institution
-userSchema.pre('validate', function (next) {
+userSchema.pre('validate', function () {
   if (this.role === 'INSTITUTION' && !this.institution) {
     return next(new Error('Institution users must have an institution'));
   }
-  next();
+
 });
 
 module.exports = mongoose.model('User', userSchema);

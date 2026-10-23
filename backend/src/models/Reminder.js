@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const reminderSchema = new Schema({
   fdr:      { type: Schema.Types.ObjectId, ref: 'FDR', index: true },
