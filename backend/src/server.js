@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const app = require('./app');
 const { port } = require('./config');
-const connectDB = requrie('./config/db');
-require('./models');
+const connectDB = require('./config/db');
+
 
 let server;
 
