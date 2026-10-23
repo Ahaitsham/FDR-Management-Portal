@@ -4,6 +4,8 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const userRoutes = require("./routes/user.routes.js");
 const instituteRoutes = require("./routes/instituition.routes.js")
+const fdrRoutes = require('./routes/fdr.routes');
+const auditRoutes = require('./routes/audit.routes');
 const { errorHandler, notFound } = require('./middlewares/error.middleware');
 const cookieParser = require('cookie-parser');
 
@@ -23,6 +25,8 @@ app.get('/', (req, res) => {
 
 app.use('/api/users', userRoutes);
 app.use('/api/institutions',instituteRoutes);
+app.use('/api/fdrs', fdrRoutes);
+app.use('/api/audit', auditRoutes);
 
 
 app.use(notFound);

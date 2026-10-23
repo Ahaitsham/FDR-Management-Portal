@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 
 const fdrSchema = new Schema({
   // ---- Identity (from the receipt) ----
-  fdrReferenceNo: { type: String, required: true, trim: true },   // DEMO-SBI-001024
+  fdrReferenceNo: { type: String, required: true, trim: true, set: value => String(value).trim().toUpperCase() },   // DEMO-SBI-001024
   receiptNo:      { type: String, required: true, trim: true },
   bank: {
     name:   { type: String, required: true, index: true },        // "State Bank of India"
-    code:   { type: String },                                      // "SBI" – use an enum/lookup table in prod
+    code:   { type: String, required: true, trim: true, uppercase: true }, // "SBI" – use an enum/lookup table in prod
     branch: { type: String, required: true }                       // "Kharghar, Navi Mumbai"
   },
 

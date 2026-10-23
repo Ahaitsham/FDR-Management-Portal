@@ -2,14 +2,20 @@ const mongoose = require('mongoose');
 const app = require('./app');
 const { port } = require('./config');
 const connectDB = require('./config/db');
+const { startExpiryJob } = require('./jobs/expiry.job');
 
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '1.1.1.1']);
 
 let server;
 
 const start = async () => {
     try {
         await connectDB();
-        server = app.listen(port, () => console.log(`server running on ${port}`));
+        server = app.listen(port, () => {
+            console.log(`server running on ${port}`);
+            startExpiryJob();
+        });
     } catch (err) {
         console.error('failed to start server:', err.message);
         process.exit(1);
